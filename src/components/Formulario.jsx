@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
+import { obtenerDiferenciaYear, calcularMarca, obtenerPlan } from '../helper';
 
 const Campo = styled.div `
     display: flex;
@@ -86,34 +87,36 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
         let resultado = 2000;
 
         // obtener la diferencia de años
-        // const diferencia = obtenerDiferenciaYear(year);
+        const diferencia = obtenerDiferenciaYear(year);
 
         // // por cada año hay que restar el 3%
-        // resultado -= (( diferencia * 3 ) * resultado) / 100;
+        resultado -= (( diferencia * 3 ) * resultado) / 100;
 
-        // // Americano 15
+        // // Americano 15%
         // // Asiatico 5%
         // // Europeo 30%
-        // resultado = calcularMarca(marca) * resultado;
+        resultado = calcularMarca(marca) * resultado;
 
         // // Basíco aumenta 20%
-        // // Completo 50%
-        // const incrementoPlan = obtenerPlan(plan);
-        // resultado = parseFloat( incrementoPlan * resultado ).toFixed(2);
+        // // Completo aumento 50%
+        const incrementoPlan = obtenerPlan(plan);
+        resultado = parseFloat( incrementoPlan * resultado ).toFixed(2);
 
-        guardarCargando(true);
+        console.log(resultado)
 
-        setTimeout(() => {
+        // guardarCargando(true);
 
-            // Elimina el spinner
-            guardarCargando(false);
+        // setTimeout(() => {
 
-            // pasa la información al componente principal
-            guardarResumen({
-                cotizacion: Number(resultado),
-                datos
-            });
-        }, 3000);
+        //     // Elimina el spinner
+        //     guardarCargando(false);
+
+        //     // pasa la información al componente principal
+        //     guardarResumen({
+        //         cotizacion: Number(resultado),
+        //         datos
+        //     });
+        // }, 3000);
 
 
 
@@ -147,6 +150,8 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="">-- Seleccione --</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
