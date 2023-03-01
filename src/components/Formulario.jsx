@@ -102,21 +102,20 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
         const incrementoPlan = obtenerPlan(plan);
         resultado = parseFloat( incrementoPlan * resultado ).toFixed(2);
 
-        console.log(resultado)
 
-        // guardarCargando(true);
+        guardarCargando(true);
 
-        // setTimeout(() => {
+        setTimeout(() => {
 
-        //     // Elimina el spinner
-        //     guardarCargando(false);
+            // Elimina el spinner
+            guardarCargando(false);
 
-        //     // pasa la información al componente principal
-        //     guardarResumen({
-        //         cotizacion: Number(resultado),
-        //         datos
-        //     });
-        // }, 3000);
+            // pasa la información al componente principal
+            guardarResumen({
+                cotizacion: Number(resultado),
+                datos
+            });
+        }, 3000);
 
 
 
