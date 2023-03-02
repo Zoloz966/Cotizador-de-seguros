@@ -34,3 +34,9 @@ span.resultado {
   opacity: 0;
   transform: translateY(-10%);
 }
+
+@media (max-width: 650px) {
+  img {
+    display: none;
+  }
+}
